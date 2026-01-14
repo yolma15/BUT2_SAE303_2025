@@ -3,10 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/style/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
   </head>
   <body>
+    <header>
+        <div class="header-top">
+            <img src="public/img/logo.png" alt="Logo, retour à l'accueil">
+            <form action="#" method="POST">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="search-bar" type="search" name="search" id="search" placeholder="Rechercher d'autres Datavisualisations...">
+                <button type="submit">OK</button>
+            </form>
+            <div class="lang-menu">
+                <label for="language">🌐</label>
+                <select id="language">
+                    <option value="fr" selected>Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+        </div>
+        <navbar>
+            <a href="#infos">Informations générales</a>
+            <a href="#datavis">Datavisualisation</a>
+        </navbar>
+    </header>
+
+    <div class="top-data">
+        <div class="first-infos-holder">
+            <div class="first-left-side">
+
+            </div>
+            <div class="first-right-side">
+
+            </div>
+        </div>
+
+
+        <div class="second-infos-holder">
+            <div class="second-left-side">
+
+            </div>
+            <div class="second-right-side">
+
+            </div>
+        </div>
+    </div>
+
+
     <canvas id="chart"></canvas>
   </body>
 </html>
