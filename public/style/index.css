@@ -57,6 +57,71 @@ navbar a:hover{
     transform:scale(1.04);
 }
 
+.first-infos-holder{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 20px;
+    gap:2%;
+}
+
 .top-data{
     background-color:#FFEBD1;
+}
+
+.first-left-side{
+    display:flex;
+    flex-direction: column;
+    width:48%;
+}
+
+.first-right-side{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    width:48%
+}
+
+.first-right-side-top{
+    display:flex;
+    gap:20px;
+}
+
+.first-right-side-bottom{
+    display:flex;
+    gap:20px;
+}
+
+
+
+
+
+
+
+
+.second-infos-holder{
+    display:flex;
+    gap:2%;
+}
+
+.second-left-side{
+    display:flex;
+    flex-direction:column;
+    width:48%;
+    background-color:#BDBDBD;
+    margin-left:50px;
+    width:80%;
+    padding:2.5%;
+}
+
+.main-info-cont{
+    display:flex;
+    flex-direction: column;
+    width:48%;
+}
+
+
+.img-cont{
+    display:flex;
+    gap:50px;
 }
