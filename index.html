@@ -9,4 +9,32 @@
   <body>
     <canvas id="chart"></canvas>
   </body>
+  <script>
+    let data = [13.8, 13.9, 14.2, 14.4, 14.6, 14.8, 15.0, 15.2,16.5,17.8];
+    let labels = [
+      "1880",
+      "1960",
+      "1980",
+      "1990",
+      "2000",
+      "2010",
+      "2020",
+      "2024",
+      "2062",
+      "2100",
+    ];
+    let ctx = document.getElementById("chart");
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "température en °C",
+            data: data,
+          },
+        ],
+      },
+    });
+  </script>
 </html>
