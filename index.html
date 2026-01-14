@@ -80,10 +80,12 @@
 
             </div>
             <div class="second-right-side">
-              <h1>Datavisuel</h1>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore recusandae temporibus maxime voluptatibus harum pariatur, quis mollitia in tenetur deserunt earum inventore, possimus necessitatibus debitis fugiat, quam sed illo ipsum.
-              </p>
+              <div class="right-side-info-holder">
+                <h1>Datavisuel</h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore recusandae temporibus maxime voluptatibus harum pariatur, quis mollitia in tenetur deserunt earum inventore, possimus necessitatibus debitis fugiat, quam sed illo ipsum.
+                </p>
+              </div>
               <div class="img-cont">
                 <img src="public/img/img_pres1.png">
                 <img src="public/img/img_pres1.png">
@@ -94,8 +96,101 @@
     </div>
 
 
-    <canvas id="chart"></canvas>
+
+    <h3>Variation de température sur Terre</h3>
+
+    <div class="datavis-cont">
+      <section class="datavis-info">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
+        </p>
+      </section>
+      <section class="datavis-rendu">
+        <img src="public/img/datavis.jpg">
+      </section>
+    </div>
+
+
+    <div class="graph-part">
+
+      <h4>Poster Datavis</h4>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nihil dolore aspernatur tenetur possimus, doloribus quam sequi voluptas animi accusantium alias quo ratione ipsam, soluta reiciendis dolorem perferendis fuga dolores?
+      </p>
+
+      <div class="graph-cont">
+
+        <div class="modifier">
+
+
+
+          <h5>Légende</h5>
+          <hr>
+          <div class="légende1">
+            <div class="yellow"></div> 
+            <p>Jaune</p>
+          </div>
+          <div class="légende1">
+            <div class="Orange"></div> 
+            <p>Orange</p>
+          </div>
+          <div class="légende1">
+            <div class="Rouge"></div> 
+            <p>Rouge</p>
+          </div>
+          <div class="légende1">
+            <div class="Hachure"></div> 
+            <p>Hachure</p>
+          </div>
+
+
+
+
+          <h5> Interactions </h5>
+          <hr>
+          <select id="language">
+              <option value="ecart" selected>Choisir les dates d'années d'écart</option>
+              <option value="1">1 an</option>
+              <option value="5">5 ans</option>
+              <option value="10">10 ans</option>
+              <option value="20">20 ans</option>
+          </select>
+
+
+          <select id="language">
+              <option value="forme" selected>Choisir la forme de représentation du graphique</option>
+              <option value="1">en barre</option>
+              <option value="5">à points</option>
+              <option value="10">à points reliés</option>
+          </select>
+
+
+          <button type="submit">Valider</button>
+
+
+
+        </div>
+
+        <div class="graph">
+          <canvas id="chart"></canvas>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
   </body>
+
+
+
+
+
+
   <script>
     let data = [13.8, 13.9, 14.2, 14.4, 14.6, 14.8, 15.0, 15.2,16.5,17.8];
     let labels = [
