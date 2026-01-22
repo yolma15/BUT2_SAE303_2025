@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/style/index.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <title>Réchauffement Climatique - Datavisualisation</title>
+    <link rel="stylesheet" href="public/css/styles.css" />
   </head>
   <body>
     <header>
-      <div class="header-top">
+      <!-- <div class="header-top">
         <img src="public/img/logo.png" alt="Logo, retour à l'accueil" />
-        <form action="#" method="POST">
+        <form action="#" method="GET">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input
             class="search-bar"
@@ -19,257 +19,328 @@
             name="search"
             id="search"
             placeholder="Rechercher d'autres Datavisualisations..."
+            aria-label="Rechercher d'autres datavisualisations"
           />
           <button type="submit">OK</button>
         </form>
         <div class="lang-menu">
-          <label for="language">🌐</label>
-          <select id="language">
+          <label for="language-header">🌐</label>
+          <select id="language-header" aria-label="Sélectionner la langue">
             <option value="fr" selected>Français</option>
             <option value="en">English</option>
             <option value="es">Español</option>
           </select>
         </div>
-      </div>
-      <navbar>
+      </div> -->
+      <!-- <nav class="navbar">
         <a href="#infos">Informations générales</a>
         <a href="#datavis">Datavisualisation</a>
-      </navbar>
-    </header>
+      </nav>
+    </header> -->
 
-    <div class="top-data">
-      <div class="first-infos-holder">
-        <div class="first-left-side">
-          <h1>Sujet</h1>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            nobis, rem nulla natus inventore, odio optio exercitationem
-            recusandae quis ducimus modi iusto voluptatem tempore aspernatur
-            aperiam quia accusamus eos porro.
-          </p>
-        </div>
-        <div class="first-right-side">
-          <div class="first-ride-side-top">
-            <img src="public/img/top-image1.png" />
-            <img src="public/img/top-image2.png" />
-          </div>
-          <div class="first-ride-side-bottom">
-            <img src="public/img/bottom-image1.png" />
-            <img src="public/img/bottom-image2.png" />
-          </div>
-        </div>
-      </div>
-
-      <div class="second-infos-holder">
-        <div class="second-left-side">
-          <h2><strong>Réchauffement Climatique</strong> (2025)</h2>
-
-          <div class="main-info-cont">
-            <div class="first-column">
-              <h2>34%</h2>
-              <p>
-                De taux d'émissions de gaz à effet de serre dans le domaine du
-                transport.
-              </p>
-            </div>
-            <div class="second-column">
-              <h2>+1.5°C</h2>
-              <p>
-                L'augmentation moyenne de la température par rapport à l'ère
-                préindustrielle (1850).
-              </p>
-            </div>
-            <div class="third-column">
-              <h2>3 000</h2>
-              <p>
-                Quantité de glaciers qui disparaissent chaque année dans le
-                monde.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="second-right-side">
-          <div class="right-side-info-holder">
-            <h1>Datavisuel</h1>
+    <main>
+      <div class="top-data" id="infos">
+        <div class="first-infos-holder">
+          <div class="first-left-side">
+            <h1>Sujet</h1>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              recusandae temporibus maxime voluptatibus harum pariatur, quis
-              mollitia in tenetur deserunt earum inventore, possimus
-              necessitatibus debitis fugiat, quam sed illo ipsum.
+              Bienvenue sur notre site dédié à l’analyse et à la visualisation
+              de données autour des enjeux environnementaux. Nous souhaitons
+              sensibiliser aux risques planétaires, qui représentent des menaces
+              pesant sur l’équilibre de la Terre. Certains de ces risques ont
+              déjà dépassé des seuils critiques, entraînant des conséquences
+              importantes sur l’environnement et les sociétés humaines.
+              <br /><br />
+              Parmi eux, le réchauffement climatique constitue un enjeu majeur,
+              marqué par l’augmentation des températures, la fonte des glaciers
+              et la multiplication des événements climatiques extrêmes. Nous
+              avons créé un visuel afin de représenter de manière claire
+              l’évolution de la température moyenne.
             </p>
           </div>
-          <div class="img-cont">
-            <img src="public/img/img_pres1.png" />
-            <img src="public/img/img_pres1.png" />
-            <img src="public/img/img_pres1.png" />
+          <div class="first-right-side">
+            <div class="first-right-side-top">
+              <img
+                src="public/img/sol.jpeg"
+                alt="Image de déforestation et impact climatique"
+              />
+              <img
+                src="public/img/Iceberg.jpeg"
+                alt="Image de glace polaire et changement climatique"
+              />
+            </div>
+            <div class="first-right-side-bottom">
+              <img
+                src="public/img/Usine.jpg"
+                alt="Image de tempête climatique"
+              />
+              <img
+                src="public/img/feu.jpg"
+                alt="Image de désert et sécheresse"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="second-infos-holder">
+          <div class="second-left-side">
+            <h2><strong>Réchauffement Climatique</strong> (2025)</h2>
+
+            <div class="main-info-cont">
+              <div class="first-column">
+                <h2>34%</h2>
+                <p>
+                  De taux d'émissions de gaz à effet de serre dans le domaine du
+                  transport.
+                </p>
+              </div>
+              <div class="second-column">
+                <h2>+1.5°C</h2>
+                <p>
+                  L'augmentation moyenne de la température par rapport à l'ère
+                  préindustrielle (1850).
+                </p>
+              </div>
+              <div class="third-column">
+                <h2>3 000</h2>
+                <p>
+                  Quantité de glaciers qui disparaissent chaque année dans le
+                  monde.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="second-right-side">
+            <div class="right-side-info-holder">
+              <h1>Datavisuel</h1>
+              <p>
+                Visualisez les données climatiques sous différentes formes pour
+                mieux comprendre l'ampleur du phénomène. Les graphiques
+                interactifs ci-dessous représentent les tendances historiques et
+                les projections futures, facilitant une compréhension claire de
+                la situation.
+              </p>
+            </div>
+            <div class="img-cont">
+              <img
+                src="public/img/Poster_Datavisuel1.jpg"
+                alt="Illustration 1 du changement climatique"
+              />
+              <img
+                src="public/img/Poster_Datavisuel2.jpg"
+                alt="Illustration 2 du changement climatique"
+              />
+              <img
+                src="public/img/Poster_Datavisuel3.jpg"
+                alt="Illustration 3 du changement climatique"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <h3>Variation de température sur Terre</h3>
+      <h3><strong>Poster Datavis</strong></h3>
 
-    <div class="datavis-cont">
-      <section class="datavis-info">
+      <div class="datavis-cont" id="datavis">
+        <section class="datavis-info">
+          <h3>L'évolution de la température</h3>
+          <p>
+            Pour représenter cette évolution, nous avons utilisé une série
+            d'alumettes. Chaque allumette photographiée correspond à une année
+            et illustre l’augmentation progressive de la température moyenne sur
+            Terre. Au début, les allumettes sont peu brûlées, presque intactes,
+            et deviennent progressivement plus consumées au fil des années.
+            Cette progression montre l’augmentation continue de la température. 
+          </p>
+          <h3>Une estimation, sensibilisation</h3>
+          <p>
+            L’estimation pour l’année 2100 est représentée par une allumette
+            noire, symbolisant un futur potentiellement critique si aucune
+            mesure n’est prise pour limiter le réchauffement climatique. À
+            travers cette métaphore visuelle, les allumettes évoquent à la fois
+            la chaleur et la destruction. Nous avons donc voulu sensibiliser le
+            spectateur à la réalité du changement climatique et à l’importance
+            d’agir pour limiter les conséquences.
+          </p>
+        </section>
+        <section class="datavis-rendu">
+          <img
+            src="public/img/datavis.png"
+            alt="Graphique détaillé de l'évolution de la température moyennes terrestres de 1880 à 2024"
+          />
+        </section>
+      </div>
+
+      <div class="graph-part">
+        <h4>Variation de température sur Terre</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-          quod. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Quisquam, quod.
+          Ce visual interactif vous permet d'explorer l'évolution du
+          réchauffement climatique au fil des années. En ajustant les
+          paramètres, vous pouvez visualiser différentes périodes et formes de
+          représentation graphique. Ces interactions facilitent l'exploration
+          des données climatiques, des informations précieuses et des éléments
+          de comparaison pour une meilleure compréhension des tendances à effet
+          de serre.
         </p>
-      </section>
-      <section class="datavis-rendu">
-        <img src="public/img/datavis.jpg" />
-      </section>
-    </div>
 
-    <div class="graph-part">
-      <h4>Poster Datavis</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nihil
-        dolore aspernatur tenetur possimus, doloribus quam sequi voluptas animi
-        accusantium alias quo ratione ipsam, soluta reiciendis dolorem
-        perferendis fuga dolores?
-      </p>
+        <div class="graph-cont">
+          <div class="modifier">
+            <h5>Légende</h5>
+            <hr />
+            <div class="légende1">
+              <div class="yellow"></div>
+              <p>Jaune</p>
+            </div>
+            <div class="légende1">
+              <div class="orange"></div>
+              <p>Orange</p>
+            </div>
+            <div class="légende1">
+              <div class="rouge"></div>
+              <p>Rouge</p>
+            </div>
+            <div class="légende1">
+              <div class="hachure"></div>
+              <p>Hachure</p>
+            </div>
 
-      <div class="graph-cont">
-        <div class="modifier">
-          <h5>Légende</h5>
-          <hr />
-          <div class="légende1">
-            <div class="yellow"></div>
-            <p>Jaune</p>
+            <h5>Interactions</h5>
+            <hr />
+
+            <label for="ecart-annees">Écart d'années</label>
+            <select
+              id="ecart-annees"
+              aria-label="Choisir les dates d'années d'écart"
+            >
+              <option value="1" selected>1 an</option>
+              <option value="5">5 ans</option>
+              <option value="10">10 ans</option>
+              <option value="20">20 ans</option>
+            </select>
+
+            <label for="forme-graphique">Forme de représentation</label>
+            <select
+              id="forme-graphique"
+              aria-label="Choisir la forme de représentation du graphique"
+            >
+              <option value="bar" selected>En barre</option>
+              <option value="line">À points reliés</option>
+              <option value="scatter">À points</option>
+            </select>
+
+            <button
+              type="button"
+              id="btn-valider"
+              aria-label="Valider les modifications"
+            >
+              Valider
+            </button>
           </div>
-          <div class="légende1">
-            <div class="Orange"></div>
-            <p>Orange</p>
+
+          <div class="graph">
+            <canvas
+              id="chart"
+              role="img"
+              aria-label="Graphique : Variation de température moyenne mondiale de 1880 à 2100"
+            ></canvas>
+            <canvas
+              id="chart1"
+              role="img"
+              aria-label="Graphique : Émissions territoriales de CO2 par habitant en 1990 et 2022"
+            ></canvas>
+            <canvas
+              id="chart2"
+              role="img"
+              aria-label="Graphique : Comparaison des émissions de CO2 entre 1990 et 2022"
+            ></canvas>
           </div>
-          <div class="légende1">
-            <div class="Rouge"></div>
-            <p>Rouge</p>
-          </div>
-          <div class="légende1">
-            <div class="Hachure"></div>
-            <p>Hachure</p>
-          </div>
-
-          <h5>Interactions</h5>
-          <hr />
-          <select id="language">
-            <option value="ecart" selected>
-              Choisir les dates d'années d'écart
-            </option>
-            <option value="1">1 an</option>
-            <option value="5">5 ans</option>
-            <option value="10">10 ans</option>
-            <option value="20">20 ans</option>
-          </select>
-
-          <select id="language">
-            <option value="forme" selected>
-              Choisir la forme de représentation du graphique
-            </option>
-            <option value="1">en barre</option>
-            <option value="5">à points</option>
-            <option value="10">à points reliés</option>
-          </select>
-
-          <button type="submit">Valider</button>
-        </div>
-
-        <div class="graph">
-          <canvas id="chart"></canvas>
-          <canvas id="chart1"></canvas>
-          <canvas id="chart2"></canvas>
         </div>
       </div>
-    </div>
+    </main>
+
+    <script>
+      // Configuration commune des graphiques
+      const chartConfig = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+            labels: {
+              font: { size: 12 },
+              color: "#1a1a1a",
+            },
+          },
+          title: {
+            display: true,
+            font: {
+              size: 14,
+              weight: "bold",
+            },
+            color: "#1a1a1a",
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: "#666" },
+            grid: { color: "rgba(0,0,0,0.05)" },
+          },
+          x: {
+            ticks: { color: "#666" },
+            grid: { color: "rgba(0,0,0,0.05)" },
+          },
+        },
+      };
+
+      // Graphique 1 : Température moyenne
+      const data = [0, 0.1, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 2.8, 4];
+      const labels = [
+        "1880",
+        "1960",
+        "1980",
+        "1990",
+        "2000",
+        "2010",
+        "2020",
+        "2024",
+        "2062",
+        "2100", 
+      ];
+
+      const ctx = document.getElementById("chart");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Température en °C",
+              data: data,
+              borderColor: "#FF6B6B",
+              backgroundColor: "rgba(255, 107, 107, 0.1)",
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: "#FF6B6B",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          ...chartConfig,
+          plugins: {
+            ...chartConfig.plugins,
+            title: {
+              ...chartConfig.plugins.title,
+              text: "Variation de la température moyenne terrestre de 1880 à 2100",
+            },
+          },
+        },
+      });
+    </script>
   </body>
-
-  <script>
-    let data = [13.8, 13.9, 14.2, 14.4, 14.6, 14.8, 15.0, 15.2, 16.5, 17.8];
-    let labels = [
-      "1880",
-      "1960",
-      "1980",
-      "1990",
-      "2000",
-      "2010",
-      "2020",
-      "2024",
-      "2062",
-      "2100",
-    ];
-    let ctx = document.getElementById("chart");
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "température en °C",
-            data: data,
-          },
-        ],
-      },
-    });
-  </script>
-
-  <script>
-    let etx = document.getElementById("chart1");
-    new Chart(etx, {
-      type: "bar",
-      data: {
-        labels: ["USA", "UE", "Chine", "France", "Inde"],
-        datasets: [
-          {
-            label: ["1990"],
-            data: [24.8, 11.6, 3.4, 9.2, 1.6],
-            backgroundColor: "rgba(15, 0, 102, 0.4)",
-          },
-          {
-            label: ["2022"],
-            data: [18.1, 7.8, 10.7, 6.3, 2.7],
-            backgroundColor: "red",
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: "Émissions territoriales de tonnes equivalent CO2 par habitant en 1990 et 2022",
-          },
-        },
-      },
-    });
-
-    let dtx = document.getElementById("chart2");
-    new Chart(dtx, {
-      type: "bar",
-      data: {
-        labels: ["USA", "UE", "Chine", "France", "Inde"],
-        datasets: [
-          {
-            label: ["1990"],
-            data: [21.8, 10.7, 10.2, 9.1, 2.9],
-            backgroundColor: "cyan",
-          },
-          {
-            label: ["2022"],
-            data: [18.1, 7.8, 10.7, 6.3, 2.7],
-            backgroundColor: "red",
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          title: {
-            display: true,
-            text: "Émissions territoriales de tonnes equivalent CO2 par habitant en 2022",
-          },
-        },
-      },
-    });
-  </script>
 </html>
