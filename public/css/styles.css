@@ -61,7 +61,7 @@ h5 {
 }
 
 p {
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #555;
 }
@@ -230,12 +230,13 @@ main {
 }
 
 .second-left-side {
-  flex: 0 0 45%;
+  flex: 0 0 60%;
   background-color: #bdbdbd;
   padding: 30px;
   border-radius: 8px;
   position: relative;
   bottom: 80px;
+  margin-top:50px;
 }
 
 .second-left-side h2 {
@@ -256,8 +257,9 @@ main {
   flex: 1;
   text-align: center;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(95, 78, 47, 0.2);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -287,6 +289,7 @@ main {
   flex-direction: column;
   gap: 25px;
   align-items: flex-start;
+  margin-bottom:50px;
 }
 
 .right-side-info-holder h1 {
@@ -326,7 +329,7 @@ main {
 }
 
 .datavis-info {
-  flex: 0 0 25%;
+  flex: 0 0 36%;
   background-color: #f6f6f6;
   padding: 25px;
   border-radius: 8px;
@@ -353,11 +356,13 @@ main {
 
 .datavis-rendu {
   flex: 1;
+  
 }
 
 .datavis-rendu img {
   width: 100%;
   height: auto;
+  border-radius:8px;
 
 }
 
@@ -584,4 +589,52 @@ main {
   .second-left-side {
     bottom: 0;
   }
+}
+
+
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+.datavis-rendu img {
+  cursor: pointer;
+}
+
+.titre{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size:3rem;
+  margin:50px 10%;
 }

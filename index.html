@@ -9,6 +9,38 @@
   </head>
   <body>
     <main>
+      <h1 class="titre"><strong>Évolution de la température moyenne terrestre de 1880 à 2024</strong></h1>
+
+      <div class="datavis-cont" id="datavis">
+        <section class="datavis-info">
+          <h3>L'évolution de la température</h3>
+          <p>
+            Pour représenter cette évolution, nous avons utilisé une série
+            d'alumettes. Chaque allumette photographiée correspond à une année
+            et illustre l’augmentation progressive de la température moyenne sur
+            Terre. Au début, les allumettes sont peu brûlées, presque intactes,
+            et deviennent progressivement plus consumées au fil des années.
+            Cette progression montre l’augmentation continue de la température. 
+          </p>
+          <h3>Une estimation, sensibilisation</h3>
+          <p>
+            L’estimation pour l’année 2100 est représentée par une allumette
+            noire, symbolisant un futur potentiellement critique si aucune
+            mesure n’est prise pour limiter le réchauffement climatique. À
+            travers cette métaphore visuelle, les allumettes évoquent à la fois
+            la chaleur et la destruction. Nous avons donc voulu sensibiliser le
+            spectateur à la réalité du changement climatique et à l’importance
+            d’agir pour limiter les conséquences.
+          </p>
+        </section>
+        <section class="datavis-rendu">
+          <img
+            src="public/img/datavis.png"
+            alt="Graphique détaillé de l'évolution de la température moyennes terrestres de 1880 à 2024"
+            id="datavis-img"
+          />
+        </section>
+      </div>
       <div class="top-data" id="infos">
         <div class="first-infos-holder">
           <div class="first-left-side">
@@ -53,7 +85,7 @@
         </div>
 
         <div class="second-infos-holder">
-          <div class="second-left-side">
+          <div class="second-right-side">
             <h2><strong>Réchauffement Climatique</strong> (2025)</h2>
 
             <div class="main-info-cont">
@@ -80,66 +112,10 @@
               </div>
             </div>
           </div>
-          <div class="second-right-side">
-            <div class="right-side-info-holder">
-              <h1>Datavisuel</h1>
-              <p>
-                Visualisez les données climatiques sous différentes formes pour
-                mieux comprendre l'ampleur du phénomène. Les graphiques
-                interactifs ci-dessous représentent les tendances historiques et
-                les projections futures, facilitant une compréhension claire de
-                la situation.
-              </p>
-            </div>
-            <div class="img-cont">
-              <img
-                src="public/img/Poster_Datavisuel1.jpg"
-                alt="Illustration 1 du changement climatique"
-              />
-              <img
-                src="public/img/Poster_Datavisuel2.jpg"
-                alt="Illustration 2 du changement climatique"
-              />
-              <img
-                src="public/img/Poster_Datavisuel3.jpg"
-                alt="Illustration 3 du changement climatique"
-              />
-            </div>
-          </div>
         </div>
       </div>
 
-      <h3><strong>Poster Datavis</strong></h3>
-
-      <div class="datavis-cont" id="datavis">
-        <section class="datavis-info">
-          <h3>L'évolution de la température</h3>
-          <p>
-            Pour représenter cette évolution, nous avons utilisé une série
-            d'alumettes. Chaque allumette photographiée correspond à une année
-            et illustre l’augmentation progressive de la température moyenne sur
-            Terre. Au début, les allumettes sont peu brûlées, presque intactes,
-            et deviennent progressivement plus consumées au fil des années.
-            Cette progression montre l’augmentation continue de la température. 
-          </p>
-          <h3>Une estimation, sensibilisation</h3>
-          <p>
-            L’estimation pour l’année 2100 est représentée par une allumette
-            noire, symbolisant un futur potentiellement critique si aucune
-            mesure n’est prise pour limiter le réchauffement climatique. À
-            travers cette métaphore visuelle, les allumettes évoquent à la fois
-            la chaleur et la destruction. Nous avons donc voulu sensibiliser le
-            spectateur à la réalité du changement climatique et à l’importance
-            d’agir pour limiter les conséquences.
-          </p>
-        </section>
-        <section class="datavis-rendu">
-          <img
-            src="public/img/datavis.png"
-            alt="Graphique détaillé de l'évolution de la température moyennes terrestres de 1880 à 2024"
-          />
-        </section>
-      </div>
+      
 
       <div class="graph-part">
         <h4>Variation de température sur Terre</h4>
@@ -249,6 +225,11 @@
       </div>
     </main>
 
+
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-img" src="" alt="Datavis agrandie" />
+    </div>
     <script>
       // --- 1. DONNÉES ---
       const allLabels = [
@@ -474,6 +455,36 @@
 
       // Clic sur Valider
       btnValider.addEventListener("click", updateChartStyle);
+
+
+
+      // ===== LIGHTBOX DATAVIS =====
+      const datavisImg = document.getElementById("datavis-img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.querySelector(".lightbox-img");
+      const lightboxClose = document.querySelector(".lightbox-close");
+
+      // Ouvrir la lightbox
+      datavisImg.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = datavisImg.src;
+      });
+
+      // Fermer avec la croix
+      lightboxClose.addEventListener("click", () => {
+        lightbox.style.display = "none";
+      });
+
+      // Fermer en cliquant sur le fond
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+        }
+      });
     </script>
+
+
+
+    
   </body>
 </html>
