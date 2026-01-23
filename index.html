@@ -158,16 +158,8 @@
             <h5>Légende</h5>
             <hr />
             <div class="légende1">
-              <div class="yellow"></div>
-              <p>Jaune</p>
-            </div>
-            <div class="légende1">
-              <div class="orange"></div>
-              <p>Orange</p>
-            </div>
-            <div class="légende1">
               <div class="rouge"></div>
-              <p>Rouge</p>
+              <p>2024</p>
             </div>
             <div class="légende1">
               <div
@@ -427,6 +419,7 @@
 
           if (year === 2024) {
             borderWidths.push(5); // Très épais pour 2024
+            bgColors[bgColors.length - 1] = theme.line; // Plein pour 2024
           } else {
             borderWidths.push(2); // Normal
           }
