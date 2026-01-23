@@ -170,22 +170,49 @@
               <p>Rouge</p>
             </div>
             <div class="légende1">
-              <div class="hachure"></div>
-              <p>Hachure</p>
+              <div
+                class="hachure-legende"
+                style="
+                  background: repeating-linear-gradient(
+                    45deg,
+                    #666,
+                    #666 2px,
+                    #fff 2px,
+                    #fff 4px
+                  );
+                  border: 1px solid #ddd;
+                "
+              ></div>
+              <p>Prévisionnel</p>
             </div>
 
             <h5>Interactions</h5>
             <hr />
 
-            <label for="ecart-annees">Écart d'années</label>
-            <select
-              id="ecart-annees"
-              aria-label="Choisir les dates d'années d'écart"
+            <div
+              style="
+                margin-bottom: 15px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+              "
             >
-              <option value="1" selected>1 an</option>
-              <option value="5">5 ans</option>
-              <option value="10">10 ans</option>
-              <option value="20">20 ans</option>
+              <input
+                type="checkbox"
+                id="filter-years"
+                name="filter-years"
+                style="width: auto"
+              />
+              <label for="filter-years" style="margin: 0; color: white"
+                >Années clés seulement</label
+              >
+            </div>
+
+            <label for="choix-couleur">Couleur du graphique</label>
+            <select id="choix-couleur" aria-label="Choisir la couleur globale">
+              <option value="rouge" selected>Rouge</option>
+              <option value="orange">Orange</option>
+              <option value="jaune">Jaune</option>
             </select>
 
             <label for="forme-graphique">Forme de représentation</label>
@@ -229,44 +256,8 @@
     </main>
 
     <script>
-      // Configuration commune des graphiques
-      const chartConfig = {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            display: true,
-            position: "top",
-            labels: {
-              font: { size: 12 },
-              color: "#1a1a1a",
-            },
-          },
-          title: {
-            display: true,
-            font: {
-              size: 14,
-              weight: "bold",
-            },
-            color: "#1a1a1a",
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { color: "#666" },
-            grid: { color: "rgba(0,0,0,0.05)" },
-          },
-          x: {
-            ticks: { color: "#666" },
-            grid: { color: "rgba(0,0,0,0.05)" },
-          },
-        },
-      };
-
-      // Graphique 1 : Température moyenne
-      const data = [0, 0.1, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 2.8, 4];
-      const labels = [
+      // --- 1. DONNÉES ---
+      const allLabels = [
         "1880",
         "1960",
         "1980",
@@ -276,41 +267,218 @@
         "2020",
         "2024",
         "2062",
-        "2100", 
+        "2100",
       ];
+      const allData = [0, 0.1, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 2.8, 4];
+
+      // Identification des indices spéciaux
+      const index2024 = 7; // Index de l'année 2024
+      const forecastIndices = [8, 9]; // Indices pour 2062 et 2100
+
+      // Données filtrées (Années clés : 1880, 1960, 2024, 2100)
+      // On doit recalculer les indices correspondants pour le mode filtré
+      const keyIndices = [0, 1, 7, 9];
+      const keyLabels = keyIndices.map((i) => allLabels[i]);
+      const keyData = keyIndices.map((i) => allData[i]);
+
+      // Configuration des couleurs
+      const colorThemes = {
+        rouge: {
+          bg: "rgba(255, 107, 107, 0.6)",
+          border: "#FF6B6B",
+          line: "#FF6B6B",
+        },
+        orange: {
+          bg: "rgba(255, 165, 0, 0.6)",
+          border: "#e69500",
+          line: "#e69500",
+        },
+        jaune: {
+          bg: "rgba(255, 230, 128, 0.8)",
+          border: "#d4b106",
+          line: "#d4b106",
+        },
+      };
 
       const ctx = document.getElementById("chart");
-      new Chart(ctx, {
-        type: "line",
+
+      // Fonction pour créer un motif hachuré coloré
+      function createColoredHatchPattern(colorStr) {
+        const patternCanvas = document.createElement("canvas");
+        const pCtx = patternCanvas.getContext("2d");
+        patternCanvas.width = 10;
+        patternCanvas.height = 10;
+
+        // Fond blanc (ou transparent)
+        pCtx.fillStyle = "#fff";
+        pCtx.fillRect(0, 0, 10, 10);
+
+        // Lignes de la couleur choisie
+        pCtx.strokeStyle = colorStr;
+        pCtx.lineWidth = 3;
+        pCtx.beginPath();
+        pCtx.moveTo(0, 10);
+        pCtx.lineTo(10, 0);
+        pCtx.stroke();
+
+        return ctx.getContext("2d").createPattern(patternCanvas, "repeat");
+      }
+
+      // --- 2. CONFIGURATION INITIALE ---
+      const chartConfig = {
+        type: "bar",
         data: {
-          labels: labels,
+          labels: allLabels,
           datasets: [
             {
               label: "Température en °C",
-              data: data,
-              borderColor: "#FF6B6B",
-              backgroundColor: "rgba(255, 107, 107, 0.1)",
-              borderWidth: 3,
+              data: allData,
+              borderWidth: 2,
               fill: true,
               tension: 0.4,
-              pointRadius: 5,
-              pointBackgroundColor: "#FF6B6B",
-              pointBorderColor: "#fff",
-              pointBorderWidth: 2,
+              pointRadius: 6,
+              pointHoverRadius: 8,
+              pointBackgroundColor: "#fff",
             },
           ],
         },
         options: {
-          ...chartConfig,
+          responsive: true,
+          maintainAspectRatio: true,
           plugins: {
-            ...chartConfig.plugins,
+            legend: { labels: { color: "#1a1a1a" } },
             title: {
-              ...chartConfig.plugins.title,
-              text: "Variation de la température moyenne terrestre de 1880 à 2100",
+              display: true,
+              text: "Variation de la température moyenne terrestre",
+              font: { size: 14, weight: "bold" },
+              color: "#1a1a1a",
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = `Température : +${context.raw}°C`;
+                  // Ajouter une note si c'est une prévision
+                  const year = context.label;
+                  if (year === "2062" || year === "2100") {
+                    label += " (Prévision)";
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+          onClick: (e, elements) => {
+            if (elements.length > 0) {
+              const index = elements[0].index;
+              const currentLabel = myChart.data.labels[index];
+              const currentVal = myChart.data.datasets[0].data[index];
+              alert(`Année : ${currentLabel}\nTempérature : +${currentVal}°C`);
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Température (°C)" },
             },
           },
         },
-      });
+      };
+
+      let myChart = new Chart(ctx, chartConfig);
+
+      // Fonction principale de mise à jour du style
+      function updateChartStyle() {
+        // 1. Récupérer les choix
+        const colorName = document.getElementById("choix-couleur").value;
+        const theme = colorThemes[colorName];
+        const isFiltered = document.getElementById("filter-years").checked;
+        const formType = document.getElementById("forme-graphique").value;
+
+        // 2. Préparer les données (Filtrées ou Complètes)
+        let currentLabels, currentData;
+        if (isFiltered) {
+          currentLabels = keyLabels;
+          currentData = keyData;
+        } else {
+          currentLabels = allLabels;
+          currentData = allData;
+        }
+
+        // 3. Générer les tableaux de style (Couleurs et Bordures) pour CHAQUE barre
+        // Cela permet de personnaliser barre par barre (2024 gras, Futures hachurées)
+
+        const bgColors = [];
+        const borderColors = [];
+        const borderWidths = [];
+
+        currentLabels.forEach((label) => {
+          const year = parseInt(label);
+
+          // A. Gestion de la Couleur de fond (Hachures pour > 2024)
+          if (year > 2024) {
+            // Créer un motif hachuré avec la couleur sélectionnée (la couleur de ligne/bordure)
+            bgColors.push(createColoredHatchPattern(theme.line));
+          } else {
+            bgColors.push(theme.bg);
+          }
+
+          // B. Gestion des Bordures (2024 en Gras)
+          borderColors.push(theme.border);
+
+          if (year === 2024) {
+            borderWidths.push(5); // Très épais pour 2024
+          } else {
+            borderWidths.push(2); // Normal
+          }
+        });
+
+        // 4. Appliquer les modifications au graphique
+
+        // Gestion Type Scatter/Line
+        let newType = formType;
+        let showLine = true;
+        if (formType === "scatter") {
+          newType = "line";
+          showLine = false;
+        }
+
+        myChart.config.type = newType;
+        myChart.data.labels = currentLabels;
+        myChart.data.datasets[0].data = currentData;
+        myChart.data.datasets[0].showLine = showLine;
+        myChart.data.datasets[0].fill = newType === "line" && showLine;
+
+        // Application des couleurs calculées
+        // Note: Si c'est une ligne (line), on utilise une seule couleur globale pour la ligne
+        // Si c'est des barres, on utilise le tableau pour colorier chaque barre différemment
+        if (newType === "bar") {
+          myChart.data.datasets[0].backgroundColor = bgColors;
+          myChart.data.datasets[0].borderColor = borderColors;
+          myChart.data.datasets[0].borderWidth = borderWidths;
+          myChart.data.datasets[0].pointBackgroundColor = borderColors; // Points suivent la couleur
+        } else {
+          // Pour les lignes, on garde une couleur unie sinon la ligne change de couleur par segment (moins joli ici)
+          myChart.data.datasets[0].backgroundColor = theme.bg;
+          myChart.data.datasets[0].borderColor = theme.border;
+          myChart.data.datasets[0].borderWidth = 3;
+          // Pour le point 2024 sur la ligne, on peut l'agrandir
+          const pointRadiuses = currentLabels.map((l) =>
+            l === "2024" ? 10 : 5,
+          );
+          myChart.data.datasets[0].pointRadius = pointRadiuses;
+        }
+
+        myChart.update();
+      }
+
+      // --- 3. ÉVÉNEMENTS ---
+      const btnValider = document.getElementById("btn-valider");
+
+      // Initialisation au chargement
+      window.addEventListener("load", updateChartStyle);
+
+      // Clic sur Valider
+      btnValider.addEventListener("click", updateChartStyle);
     </script>
   </body>
 </html>
