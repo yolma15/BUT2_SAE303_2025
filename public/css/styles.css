@@ -381,11 +381,13 @@ main {
 
 .datavis-rendu {
   flex: 1;
+  
 }
 
 .datavis-rendu img {
   width: 100%;
   height: auto;
+  border-radius:8px;
 
 }
 
@@ -628,4 +630,45 @@ footer {
   .second-left-side {
     bottom: 0;
   }
+}
+
+
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+.datavis-rendu img {
+  cursor: pointer;
 }
